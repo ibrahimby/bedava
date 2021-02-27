@@ -1,10 +1,11 @@
-const  ikilik  =  gerektirir ( 'discord.js' ) ;
-ihracat . run  =  async  ( client ,  message ,  args )  =>  { 
-let  önek  =  '!'
-let  yardım  =  new  Discord . RichEmbed ( )  
-. setAuthor ( ` $ { istemci . kullanıcı . kullanıcı adı } ` ,  istemci . kullanıcı . avatarURL )
-. setColor ( 'KIRMIZI' )
-. addField ( 'müzik_radyo | Radyo Komutları' , `
+
+const Discord = require('discord.js');
+exports.run = async (client, message, args) => { 
+let prefix = '!'
+let yardım = new Discord.RichEmbed()  
+.setAuthor(`${client.user.username}`, client.user.avatarURL)
+.setColor('RED')
+.addField('Kobs Radyo Bot | Radyo Komutları',`
 ** r! radyo 1 **: FenomenFM 
 ** r! radyo 2 **: KralFM
 ** r! radyo 3 **: KralPopFM
@@ -36,16 +37,16 @@ let  yardım  =  new  Discord . RichEmbed ( )
 ** r! radyo 29 **: HocalarFM
 ** r! radyo 30 **: PowertürkcoverFM
 ** r! radyo 30 **: ShowFM` )
-. setFooter ( ` $ { mesaj . yazar . tag } Tarafından İstendi.` ,  mesaj . yazar . avatarURL )
-. setThumbnail ( )
- mesaj . kanal . gönder ( yardım ) 
-  } ;
-ihracat . conf  =  {
-  etkin : doğru ,  
-  guildOnly : false , 
-  takma adlar : [ "yardım" ] , 
-  permLevel : 0
-} ;
-ihracat . help  =  {
-  isim : 'yardım'
-} ;
+.setFooter(`${message.author.tag} Tarafından İstendi.`, message.author.avatarURL)
+.setThumbnail()
+ message.channel.send(yardım) 
+  };
+exports.conf = {
+  enabled: true,  
+  guildOnly: false, 
+  aliases: ["help"], 
+  permLevel: 0
+};
+exports.help = {
+  name: 'help'
+};
